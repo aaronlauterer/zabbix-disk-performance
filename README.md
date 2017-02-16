@@ -1,3 +1,11 @@
+Changes in this fork
+------------
+* Add disk utilization (in %, like iostat)
+* Add average queue size (like iostat)
+* Add average read/write time (in ms) (zabbix calculated item)
+* Add a screen template for all disks in host
+* Changes in item names and units
+
 zabbix-disk-performance
 =======================
 

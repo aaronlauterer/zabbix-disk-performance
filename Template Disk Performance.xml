@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
-    <version>2.0</version>
-    <date>2015-04-09T12:56:43Z</date>
+    <version>3.2</version>
+    <date>2017-02-16T15:07:24Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -49,7 +49,11 @@
                     <publickey/>
                     <privatekey/>
                     <port/>
-                    <filter>:</filter>
+                    <filter>
+                        <evaltype>0</evaltype>
+                        <formula/>
+                        <conditions/>
+                    </filter>
                     <lifetime>30</lifetime>
                     <description/>
                     <item_prototypes>
@@ -63,7 +67,7 @@
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
-                            <status>0</status>
+                            <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
                             <units>io</units>
@@ -99,19 +103,19 @@ The only field that should go to zero. Incremented as requests are given to appr
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:IO:ms</name>
+                            <name>Disk:$1 Utilization</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>custom.vfs.dev.io.ms[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>ms</units>
+                            <units>%</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -120,7 +124,7 @@ The only field that should go to zero. Incremented as requests are given to appr
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
+                            <formula>0.1</formula>
                             <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
@@ -131,8 +135,7 @@ The only field that should go to zero. Incremented as requests are given to appr
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>Field #13&#13;
-Number of milliseconds spent doing I/Os. This field increases so long as field #12 (custom.vfs.dev.io.active) is nonzero.</description>
+                            <description>Field #13 is number of milliseconds spent doing I/Os, Saving this as delta per second, results in &quot;number of ms doing IO in each second&quot; which is disk utilization</description>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -143,19 +146,19 @@ Number of milliseconds spent doing I/Os. This field increases so long as field #
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:IO:Weight:ms</name>
+                            <name>Disk:$1 Average queue size</name>
                             <type>0</type>
                             <snmp_community/>
-                            <multiplier>0</multiplier>
+                            <multiplier>1</multiplier>
                             <snmp_oid/>
                             <key>custom.vfs.dev.weight.io.ms[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>ms</units>
+                            <units/>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -164,7 +167,7 @@ Number of milliseconds spent doing I/Os. This field increases so long as field #
                             <snmpv3_authpassphrase/>
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
-                            <formula>1</formula>
+                            <formula>0.001</formula>
                             <delay_flex/>
                             <params/>
                             <ipmi_sensor/>
@@ -188,7 +191,7 @@ This field is incremented at each I/O start, I/O completion, I/O merge, or read 
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:Bytes/sec</name>
+                            <name>Disk:$1 Read</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -232,7 +235,7 @@ This is the total number of sectors read successfully.</description>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:Bytes/sec [z]</name>
+                            <name>Disk:$1 Read [z]</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -244,7 +247,7 @@ This is the total number of sectors read successfully.</description>
                             <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>B/sec</units>
+                            <units>B/s</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -275,7 +278,7 @@ This is the total number of sectors read successfully.</description>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:Merged</name>
+                            <name>Disk:$1 Read Merged</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -284,10 +287,10 @@ This is the total number of sectors read successfully.</description>
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
+                            <status>1</status>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>Ops/s</units>
+                            <units>ops/s</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -320,7 +323,7 @@ Reads and writes which are adjacent to each other may be merged for efficiency. 
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:ms</name>
+                            <name>Disk:$1 Read ms</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -330,9 +333,9 @@ Reads and writes which are adjacent to each other may be merged for efficiency. 
                             <history>30</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>ms</units>
+                            <units>ms/s</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -365,20 +368,20 @@ This is the total number of milliseconds spent by all reads (as measured from __
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:ms [z]</name>
-                            <type>0</type>
+                            <name>Disk:$1 Read average wait</name>
+                            <type>15</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>vfs.dev.read[{#DEVICENAME},ops]</key>
+                            <key>custom.vfs.dev.read.await[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
-                            <status>1</status>
+                            <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>ms</units>
-                            <delta>1</delta>
+                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -388,7 +391,8 @@ This is the total number of milliseconds spent by all reads (as measured from __
                             <snmpv3_privpassphrase/>
                             <formula>1</formula>
                             <delay_flex/>
-                            <params/>
+                            <params>last(&quot;custom.vfs.dev.read.ops[{#DEVICENAME}]&quot;)*&#13;
+last(&quot;custom.vfs.dev.read.ms[{#DEVICENAME}]&quot;) / (last(&quot;custom.vfs.dev.read.ops[{#DEVICENAME}]&quot;)*last(&quot;custom.vfs.dev.read.ops[{#DEVICENAME}]&quot;)+0.01)</params>
                             <ipmi_sensor/>
                             <data_type>0</data_type>
                             <authtype>0</authtype>
@@ -397,7 +401,7 @@ This is the total number of milliseconds spent by all reads (as measured from __
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>This is the total number of milliseconds spent by all reads (as measured from __make_request() to end_that_request_last()).</description>
+                            <description/>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -408,7 +412,7 @@ This is the total number of milliseconds spent by all reads (as measured from __
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:Ops per second</name>
+                            <name>Disk:$1 Read Ops</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -418,7 +422,7 @@ This is the total number of milliseconds spent by all reads (as measured from __
                             <history>30</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>ops/s</units>
                             <delta>1</delta>
@@ -452,7 +456,7 @@ This is the total number of reads completed successfully.</description>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Read:Ops per second [z]</name>
+                            <name>Disk:$1 Read Ops [z]</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -462,7 +466,7 @@ This is the total number of reads completed successfully.</description>
                             <history>30</history>
                             <trends>365</trends>
                             <status>1</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>ops/s</units>
                             <delta>1</delta>
@@ -495,7 +499,7 @@ This is the total number of reads completed successfully.</description>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:Bytes/sec</name>
+                            <name>Disk:$1 Write</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -537,9 +541,10 @@ This is the total number of sectors written successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:Bytes/sec [z]</name>
+                            <name>Disk:$1 Write [z]</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>1</multiplier>
@@ -551,7 +556,7 @@ This is the total number of sectors written successfully.</description>
                             <status>1</status>
                             <value_type>3</value_type>
                             <allowed_hosts/>
-                            <units>B/sec</units>
+                            <units>B/s</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -582,7 +587,7 @@ This is the total number of sectors written successfully.</description>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:Merged</name>
+                            <name>Disk:$1 Write Merged</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -591,10 +596,10 @@ This is the total number of sectors written successfully.</description>
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
-                            <status>0</status>
-                            <value_type>3</value_type>
+                            <status>1</status>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>Ops/s</units>
+                            <units>ops/s</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -627,7 +632,7 @@ Reads and writes which are adjacent to each other may be merged for efficiency. 
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:ms</name>
+                            <name>Disk:$1 Write ms</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -637,9 +642,9 @@ Reads and writes which are adjacent to each other may be merged for efficiency. 
                             <history>30</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
-                            <units>ms</units>
+                            <units>ms/s</units>
                             <delta>1</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
@@ -672,20 +677,20 @@ This is the total number of milliseconds spent by all writes (as measured from _
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:ms [z]</name>
-                            <type>0</type>
+                            <name>Disk:$1 Write average wait</name>
+                            <type>15</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>vfs.dev.write[{#DEVICENAME},ops]</key>
+                            <key>custom.vfs.dev.write.await[{#DEVICENAME}]</key>
                             <delay>60</delay>
                             <history>30</history>
                             <trends>365</trends>
-                            <status>1</status>
+                            <status>0</status>
                             <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>ms</units>
-                            <delta>1</delta>
+                            <delta>0</delta>
                             <snmpv3_contextname/>
                             <snmpv3_securityname/>
                             <snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -695,7 +700,8 @@ This is the total number of milliseconds spent by all writes (as measured from _
                             <snmpv3_privpassphrase/>
                             <formula>1</formula>
                             <delay_flex/>
-                            <params/>
+                            <params>last(&quot;custom.vfs.dev.write.ops[{#DEVICENAME}]&quot;)*&#13;
+last(&quot;custom.vfs.dev.write.ms[{#DEVICENAME}]&quot;) / (last(&quot;custom.vfs.dev.write.ops[{#DEVICENAME}]&quot;)*last(&quot;custom.vfs.dev.write.ops[{#DEVICENAME}]&quot;)+0.01)</params>
                             <ipmi_sensor/>
                             <data_type>0</data_type>
                             <authtype>0</authtype>
@@ -704,7 +710,7 @@ This is the total number of milliseconds spent by all writes (as measured from _
                             <publickey/>
                             <privatekey/>
                             <port/>
-                            <description>This is the total number of milliseconds spent by all reads (as measured from __make_request() to end_that_request_last()).</description>
+                            <description/>
                             <inventory_link>0</inventory_link>
                             <applications>
                                 <application>
@@ -715,7 +721,7 @@ This is the total number of milliseconds spent by all writes (as measured from _
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:Ops per second</name>
+                            <name>Disk:$1 Write Ops</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -725,7 +731,7 @@ This is the total number of milliseconds spent by all writes (as measured from _
                             <history>30</history>
                             <trends>365</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>ops/s</units>
                             <delta>1</delta>
@@ -759,7 +765,7 @@ This is the total number of writes completed successfully.</description>
                             <logtimefmt/>
                         </item_prototype>
                         <item_prototype>
-                            <name>Disk:$1:Write:Ops per second [z]</name>
+                            <name>Disk:$1 Write Ops [z]</name>
                             <type>0</type>
                             <snmp_community/>
                             <multiplier>0</multiplier>
@@ -769,7 +775,7 @@ This is the total number of writes completed successfully.</description>
                             <history>30</history>
                             <trends>365</trends>
                             <status>1</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>ops/s</units>
                             <delta>1</delta>
@@ -812,7 +818,7 @@ This is the total number of writes completed successfully.</description>
                             <yaxismax>100.0000</yaxismax>
                             <show_work_period>1</show_work_period>
                             <show_triggers>1</show_triggers>
-                            <type>0</type>
+                            <type>1</type>
                             <show_legend>1</show_legend>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
@@ -849,7 +855,7 @@ This is the total number of writes completed successfully.</description>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Disk {#DEVICENAME} - Merged</name>
+                            <name>Disk {#DEVICENAME} - Utilization</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -861,39 +867,39 @@ This is the total number of writes completed successfully.</description>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
                             <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
+                            <ymin_type_1>1</ymin_type_1>
                             <ymax_type_1>0</ymax_type_1>
                             <ymin_item_1>0</ymin_item_1>
                             <ymax_item_1>0</ymax_item_1>
                             <graph_items>
                                 <graph_item>
                                     <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00C800</color>
+                                    <drawtype>1</drawtype>
+                                    <color>CCCCFF</color>
                                     <yaxisside>0</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.read.merged[{#DEVICENAME}]</key>
+                                        <key>custom.vfs.dev.io.ms[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>1</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>C80000</color>
-                                    <yaxisside>0</yaxisside>
+                                    <color>DD0000</color>
+                                    <yaxisside>1</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.write.merged[{#DEVICENAME}]</key>
+                                        <key>custom.vfs.dev.weight.io.ms[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
                         </graph_prototype>
                         <graph_prototype>
-                            <name>Disk {#DEVICENAME} - Ops/second</name>
+                            <name>Disk {#DEVICENAME} - Wait</name>
                             <width>900</width>
                             <height>200</height>
                             <yaxismin>0.0000</yaxismin>
@@ -905,7 +911,7 @@ This is the total number of writes completed successfully.</description>
                             <show_3d>0</show_3d>
                             <percent_left>0.0000</percent_left>
                             <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
+                            <ymin_type_1>1</ymin_type_1>
                             <ymax_type_1>0</ymax_type_1>
                             <ymin_item_1>0</ymin_item_1>
                             <ymax_item_1>0</ymax_item_1>
@@ -913,8 +919,8 @@ This is the total number of writes completed successfully.</description>
                                 <graph_item>
                                     <sortorder>0</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>00C800</color>
-                                    <yaxisside>0</yaxisside>
+                                    <color>FF9999</color>
+                                    <yaxisside>1</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
@@ -925,117 +931,37 @@ This is the total number of writes completed successfully.</description>
                                 <graph_item>
                                     <sortorder>1</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>C80000</color>
-                                    <yaxisside>0</yaxisside>
+                                    <color>9999FF</color>
+                                    <yaxisside>1</yaxisside>
                                     <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>Template Disk Performance</host>
                                         <key>custom.vfs.dev.write.ops[{#DEVICENAME}]</key>
-                                    </item>
-                                </graph_item>
-                            </graph_items>
-                        </graph_prototype>
-                        <graph_prototype>
-                            <name>Disk {#DEVICENAME} - Overview</name>
-                            <width>900</width>
-                            <height>200</height>
-                            <yaxismin>0.0000</yaxismin>
-                            <yaxismax>100.0000</yaxismax>
-                            <show_work_period>1</show_work_period>
-                            <show_triggers>1</show_triggers>
-                            <type>0</type>
-                            <show_legend>1</show_legend>
-                            <show_3d>0</show_3d>
-                            <percent_left>0.0000</percent_left>
-                            <percent_right>0.0000</percent_right>
-                            <ymin_type_1>0</ymin_type_1>
-                            <ymax_type_1>0</ymax_type_1>
-                            <ymin_item_1>0</ymin_item_1>
-                            <ymax_item_1>0</ymax_item_1>
-                            <graph_items>
-                                <graph_item>
-                                    <sortorder>0</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>00C8C8</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.io.active[{#DEVICENAME}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>1</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>C8C800</color>
-                                    <yaxisside>1</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.read.sectors[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>2</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>960000</color>
+                                    <color>EE0000</color>
                                     <yaxisside>0</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
+                                    <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.read.merged[{#DEVICENAME}]</key>
+                                        <key>custom.vfs.dev.read.await[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                                 <graph_item>
                                     <sortorder>3</sortorder>
                                     <drawtype>0</drawtype>
-                                    <color>C8C8C8</color>
+                                    <color>000099</color>
                                     <yaxisside>0</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
+                                    <calc_fnc>2</calc_fnc>
                                     <type>0</type>
                                     <item>
                                         <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.read.ops[{#DEVICENAME}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>4</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>009600</color>
-                                    <yaxisside>1</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.write.sectors[{#DEVICENAME}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>5</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>960096</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.write.merged[{#DEVICENAME}]</key>
-                                    </item>
-                                </graph_item>
-                                <graph_item>
-                                    <sortorder>6</sortorder>
-                                    <drawtype>0</drawtype>
-                                    <color>000096</color>
-                                    <yaxisside>0</yaxisside>
-                                    <calc_fnc>7</calc_fnc>
-                                    <type>0</type>
-                                    <item>
-                                        <host>Template Disk Performance</host>
-                                        <key>custom.vfs.dev.write.ops[{#DEVICENAME}]</key>
+                                        <key>custom.vfs.dev.write.await[{#DEVICENAME}]</key>
                                     </item>
                                 </graph_item>
                             </graph_items>
@@ -1044,9 +970,84 @@ This is the total number of writes completed successfully.</description>
                     <host_prototypes/>
                 </discovery_rule>
             </discovery_rules>
+            <httptests/>
             <macros/>
             <templates/>
-            <screens/>
+            <screens>
+                <screen>
+                    <name>Disks Overview</name>
+                    <hsize>3</hsize>
+                    <vsize>1</vsize>
+                    <screen_items>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>300</width>
+                            <height>100</height>
+                            <x>0</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Disk {#DEVICENAME} - Wait</name>
+                                <host>Template Disk Performance</host>
+                            </resource>
+                            <max_columns>1</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>300</width>
+                            <height>120</height>
+                            <x>1</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Disk {#DEVICENAME} - Bytes/second</name>
+                                <host>Template Disk Performance</host>
+                            </resource>
+                            <max_columns>1</max_columns>
+                            <application/>
+                        </screen_item>
+                        <screen_item>
+                            <resourcetype>20</resourcetype>
+                            <width>300</width>
+                            <height>120</height>
+                            <x>2</x>
+                            <y>0</y>
+                            <colspan>1</colspan>
+                            <rowspan>1</rowspan>
+                            <elements>0</elements>
+                            <valign>0</valign>
+                            <halign>0</halign>
+                            <style>0</style>
+                            <url/>
+                            <dynamic>0</dynamic>
+                            <sort_triggers>0</sort_triggers>
+                            <resource>
+                                <name>Disk {#DEVICENAME} - Utilization</name>
+                                <host>Template Disk Performance</host>
+                            </resource>
+                            <max_columns>1</max_columns>
+                            <application/>
+                        </screen_item>
+                    </screen_items>
+                </screen>
+            </screens>
         </template>
     </templates>
 </zabbix_export>
