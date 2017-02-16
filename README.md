@@ -4,6 +4,7 @@ Changes in this fork
 * Add average queue size (like iostat)
 * Add average read/write time (in ms) (zabbix calculated item)
 * Add a screen template for all disks in host
+* Ignore partitions (sda1, sda2) and keep only whole disks (sda, sdb)
 * Changes in item names and units
 
 zabbix-disk-performance
