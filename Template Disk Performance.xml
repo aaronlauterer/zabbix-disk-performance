@@ -101,6 +101,7 @@ The only field that should go to zero. Incremented as requests are given to appr
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Utilization</name>
@@ -144,6 +145,7 @@ The only field that should go to zero. Incremented as requests are given to appr
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Average queue size</name>
@@ -189,6 +191,7 @@ This field is incremented at each I/O start, I/O completion, I/O merge, or read 
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read</name>
@@ -233,6 +236,7 @@ This is the total number of sectors read successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read [z]</name>
@@ -276,6 +280,7 @@ This is the total number of sectors read successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read Merged</name>
@@ -321,6 +326,7 @@ Reads and writes which are adjacent to each other may be merged for efficiency. 
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read ms</name>
@@ -366,6 +372,7 @@ This is the total number of milliseconds spent by all reads (as measured from __
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read average wait</name>
@@ -410,6 +417,7 @@ last(&quot;custom.vfs.dev.read.ms[{#DEVICENAME}]&quot;) / (last(&quot;custom.vfs
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read Ops</name>
@@ -454,6 +462,7 @@ This is the total number of reads completed successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Read Ops [z]</name>
@@ -497,6 +506,7 @@ This is the total number of reads completed successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Write</name>
@@ -585,6 +595,7 @@ This is the total number of sectors written successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Write Merged</name>
@@ -630,6 +641,7 @@ Reads and writes which are adjacent to each other may be merged for efficiency. 
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Write ms</name>
@@ -675,6 +687,7 @@ This is the total number of milliseconds spent by all writes (as measured from _
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Write average wait</name>
@@ -719,6 +732,7 @@ last(&quot;custom.vfs.dev.write.ms[{#DEVICENAME}]&quot;) / (last(&quot;custom.vf
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Write Ops</name>
@@ -763,6 +777,7 @@ This is the total number of writes completed successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                         <item_prototype>
                             <name>Disk:$1 Write Ops [z]</name>
@@ -806,6 +821,7 @@ This is the total number of writes completed successfully.</description>
                             </applications>
                             <valuemap/>
                             <logtimefmt/>
+                            <application_prototypes/>
                         </item_prototype>
                     </item_prototypes>
                     <trigger_prototypes/>
